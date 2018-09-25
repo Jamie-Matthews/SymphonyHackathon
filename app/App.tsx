@@ -28,15 +28,24 @@ export default class App extends React.Component<IAppProps, IAppState> {
     }
 
     public render(): JSX.Element {
+        let content;
+
         if (this.state.viewState === ViewState.Loading) {
-            return (<HashLoader 
+            content = <HashLoader 
                 sizeUnit={"px"}
                 size={150}
                 color={'#000000'}
                 loading={true}
-            />);
+            />;
+        } else {
+            content = <span>The App</span>;
         }
-        return <div>THE APP</div>;
+
+        return (
+            <div className="ml-ama-wrapper">
+                {content}
+            </div>
+        );
     }
 
     private async initialize(): Promise<void> {
